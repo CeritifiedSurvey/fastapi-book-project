@@ -63,14 +63,9 @@ async def delete_book(book_id: int) -> None:
 
 
 # --- Missing Endpoint Added Below --- #
-@router.get("/{book_id}", response_model=Book, status_code=status.HTTP_200_OK)
-async def get_book(book_id: int) -> Book:
-    """
-    Retrieve a single book by its ID.
-    If the book does not exist, return a 404 error.
-    """
-    book = db.books.get(book_id)
-    if not book:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Book not found")
+@router.get("/api/v1/books/{book_id}")
+def get_book_by_id(book_id: int):
+    book = next((book for book in books_db if book["id"] == book_id), None)
+    if book is None:
+        raise HTTPException(status_code=404, detail="Book not found")
     return book
-touch .github/workflows/test.yml
