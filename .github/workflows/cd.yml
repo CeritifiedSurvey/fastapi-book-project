@@ -13,6 +13,7 @@ jobs:
      # Step 1: Checkout the code from the repository
       - name: Checkout Code
         uses: actions/checkout@v3
+
       # Step 4: SSH into the EC2 instance to deploy the application
       - name: SSH to EC2 and Deploy
         uses: appleboy/ssh-action@v0.1.5
