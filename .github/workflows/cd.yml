@@ -20,7 +20,7 @@ jobs:
         with:
           host: ${{ secrets.PUBLIC_IP }}  # GitHub Secret for EC2 public IP
           username: ubuntu  # Assuming you are using the default Ubuntu user for EC2
-          key: ${{ secrets.SSH_PRIVATE_KEY }}  # Add your private key as a GitHub Secret
+          key: ${{ secrets.SSH_PRIVATE_KEY }} 
           script: |
             # Update package index and install dependencies
             sudo apt-get update -y
